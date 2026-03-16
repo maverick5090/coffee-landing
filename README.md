@@ -21,7 +21,7 @@ Deployment
 Static export using Next.js.
 
 Live Demo:
-(link)
+([link](https://coffee-landing-orcin.vercel.app/))
 
 ## Preview
 
