@@ -1,5 +1,7 @@
 # Coffee Shop Landing Page
 
+https://coffee-landing-orcin.vercel.app/
+
 A cinematic coffee shop landing page built with Next.js 16, React 19, Tailwind v4, and Framer Motion.
 
 Features
@@ -19,4 +21,4 @@ Deployment
 Static export using Next.js.
 
 Live Demo:
-(link)
+([link](https://coffee-landing-orcin.vercel.app/))
