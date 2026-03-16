@@ -20,3 +20,14 @@ Static export using Next.js.
 
 Live Demo:
 (link)
+
+## Preview
+
+### Hero Section
+![Hero](screenshots/hero.png)
+
+### Product Showcase
+![Products](screenshots/product.png)
+
+### Features
+![Features](screenshots/feature.png)
