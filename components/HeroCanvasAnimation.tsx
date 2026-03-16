@@ -2,9 +2,10 @@
 
 import { useRef, useEffect, useState, useCallback } from 'react';
 import { motion, useScroll, useTransform, useSpring, useVelocity } from 'framer-motion';
+import { getAssetPath } from '@/lib/getAssetPath';
 
 const TOTAL_FRAMES = 40;
-const FRAME_PATH = '/frames';
+const FRAME_PATH = getAssetPath('/frames');
 
 export default function HeroCanvasAnimation() {
   const containerRef = useRef<HTMLDivElement>(null);

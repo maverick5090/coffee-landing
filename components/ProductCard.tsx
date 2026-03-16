@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { CoffeeProduct } from '@/data/products';
+import { getAssetPath } from '@/lib/getAssetPath';
 
 interface ProductCardProps {
   product: CoffeeProduct;
@@ -45,7 +46,7 @@ export default function ProductCard({ product, index }: ProductCardProps) {
         {/* Coffee Image */}
         <div className="w-full h-56 bg-[#2D1810] rounded-xl mb-5 overflow-hidden">
           <img
-            src={product.image}
+            src={getAssetPath(product.image)}
             alt={product.name}
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
           />

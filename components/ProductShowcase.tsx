@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import ProductCard from './ProductCard';
 import { coffeeProducts } from '@/data/products';
+import { getAssetPath } from '@/lib/getAssetPath';
 
 export default function ProductShowcase() {
   return (
@@ -17,7 +18,7 @@ export default function ProductShowcase() {
       >
         <div className="absolute inset-0 bg-gradient-to-r from-[#3D2418] via-[#4D3428] to-[#3D2418]" />
         <img
-          src="/coffee/splash-banner.jpg"
+          src={getAssetPath('/coffee/splash-banner.jpg')}
           alt="Coffee Splash"
           className="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-60"
         />
@@ -54,7 +55,7 @@ export default function ProductShowcase() {
             }}
           >
             <img
-              src="/coffee/bean.png"
+              src={getAssetPath('/coffee/bean.png')}
               alt=""
               className="w-full h-full object-contain drop-shadow-lg"
               aria-hidden="true"

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { features } from '@/data/products';
+import { getAssetPath } from '@/lib/getAssetPath';
 
 export default function FeatureSection() {
   return (
@@ -85,7 +86,7 @@ export default function FeatureSection() {
               <div className="absolute inset-0 bg-gradient-to-b from-[#4F9C8F]/10 to-[#D4A574]/10 rounded-full blur-3xl" />
 
               <motion.img
-                src="/coffee/cup-centered.png"
+                src={getAssetPath('/coffee/cup-centered.png')}
                 alt="Premium Coffee Cup"
                 className="relative z-10 w-64 h-64 lg:w-80 lg:h-80 object-contain drop-shadow-2xl"
                 animate={{ y: [0, -10, 0] }}
