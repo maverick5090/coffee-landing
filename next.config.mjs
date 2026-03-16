@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const isProd = process.env.NODE_ENV === 'production';
+const isGithubPages = process.env.GITHUB_PAGES === 'true';
 const repoName = 'coffee-landing';
-const basePath = isProd ? `/${repoName}` : '';
+const basePath = isProd && isGithubPages ? `/${repoName}` : '';
 
 const nextConfig = {
   output: 'export',
@@ -9,7 +10,7 @@ const nextConfig = {
     unoptimized: true
   },
   basePath,
-  assetPrefix: isProd ? `${basePath}/` : undefined,
+  assetPrefix: basePath ? `${basePath}/` : undefined,
   env: {
     NEXT_PUBLIC_BASE_PATH: basePath
   }

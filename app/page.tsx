@@ -8,12 +8,18 @@ import FinalCTA from '@/components/FinalCTA';
 // with Framer Motion's useScroll refs and canvas rendering
 const HeroCanvasAnimation = dynamic(
   () => import('@/components/HeroCanvasAnimation'),
-  { ssr: false }
+  {
+    ssr: false,
+    loading: () => <section className="h-screen bg-[#1A0F0A]" />
+  }
 );
 
 const ProductShowcase = dynamic(
   () => import('@/components/ProductShowcase'),
-  { ssr: false }
+  {
+    ssr: false,
+    loading: () => <section className="min-h-[40vh] bg-[#1A0F0A]" />
+  }
 );
 
 export default function Home() {

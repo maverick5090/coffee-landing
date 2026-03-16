@@ -12,6 +12,7 @@ export default function HeroCanvasAnimation() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [images, setImages] = useState<HTMLImageElement[]>([]);
   const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [loadFailed, setLoadFailed] = useState(false);
   const [loadProgress, setLoadProgress] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
 
@@ -60,7 +61,7 @@ export default function HeroCanvasAnimation() {
             setLoadProgress((loadedCount / TOTAL_FRAMES) * 100);
             resolve(img);
           };
-          img.onerror = reject;
+          img.onerror = () => reject(new Error(`Failed to load frame ${i}`));
         });
       });
 
@@ -70,6 +71,8 @@ export default function HeroCanvasAnimation() {
         setImagesLoaded(true);
       } catch (error) {
         console.error('Error loading frames:', error);
+        setLoadFailed(true);
+        setImagesLoaded(true);
       }
     };
 
@@ -156,7 +159,7 @@ export default function HeroCanvasAnimation() {
   return (
     <div ref={containerRef} className="relative h-[500vh]">
       {/* Loader Overlay */}
-      {(!isMounted || !imagesLoaded) && (
+      {(!isMounted || !imagesLoaded) && !loadFailed && (
         <div className="fixed inset-0 bg-[#1A0F0A] flex flex-col items-center justify-center z-50">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -188,12 +191,19 @@ export default function HeroCanvasAnimation() {
       )}
 
       <div className="sticky top-0 h-screen w-full overflow-hidden">
-        <motion.div style={{ y: yOffset }} className="w-full h-full">
-          <canvas
-            ref={canvasRef}
-            className="w-full h-full"
+        {loadFailed ? (
+          <div
+            className="w-full h-full bg-center bg-cover"
+            style={{ backgroundImage: `url(${getAssetPath('/frames/frame_0.jpg')})` }}
           />
-        </motion.div>
+        ) : (
+          <motion.div style={{ y: yOffset }} className="w-full h-full">
+            <canvas
+              ref={canvasRef}
+              className="w-full h-full"
+            />
+          </motion.div>
+        )}
 
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#1A0F0A]/30 via-transparent to-[#1A0F0A]/50 pointer-events-none" />
